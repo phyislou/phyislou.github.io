@@ -1,37 +1,17 @@
-## Welcome to GitHub Pages
+## 这里是phyislou放杂物的地方
 
-You can use the [editor on GitHub](https://github.com/phyislou/phyislou.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+### 前端有关的东西
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+访问并编辑 [本页面内容](https://github.com/phyislou/phyislou.github.io/edit/master/README.md) 
 
 ### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+用`javascript`来打个招呼吧
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```javascript
+$(document).ready(function () {
+    alert('hello world!');
+});
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/phyislou/phyislou.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+![PC图标](https://github.com/phyislou/phyislou.github.io/img/top_1.png '好难啊')
