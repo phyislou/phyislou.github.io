@@ -14,4 +14,4 @@ $(document).ready(function () {
 });
 ```
 
-![PC图标](https://github.com/phyislou/phyislou.github.io/img/top_1.png '好难啊')
+![PC图标](./img/top_1.png '好难啊')
