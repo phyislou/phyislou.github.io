@@ -1,17 +1,10 @@
 ## 这里是phyislou放杂物的地方
 
-### 前端有关的东西
 
-访问并编辑 [本页面内容](https://github.com/phyislou/phyislou.github.io/edit/master/README.md) 
+### 前端开发
+前端技术的基础：[基础内容](https://phyislou.github.io/base/preface.md)
 
-### Markdown
+前端框架React:
 
-用`javascript`来打个招呼吧
-
-```javascript
-$(document).ready(function () {
-    alert('hello world!');
-});
-```
 
 ![PC图标](./img/top_1.png '好难啊')
