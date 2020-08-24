@@ -1,4 +1,4 @@
-## 这里是phyislou放杂物的地方
+## phyislou随便写写
 
 
 ### 前端开发
@@ -8,3 +8,6 @@
 
 
 ![PC图标](./img/top_1.png '好难啊')
+
+
+访问并编辑 [本页面内容](https://github.com/phyislou/phyislou.github.io/edit/master/README.md)
