@@ -2,7 +2,7 @@
 
 
 ### 前端开发
-前端技术的基础：[基础内容](https://phyislou.github.io/base/preface.md)
+前端技术的基础：[基础内容](base/preface.md)
 
 前端框架React:
 
