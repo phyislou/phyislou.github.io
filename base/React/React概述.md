@@ -9,7 +9,7 @@
 
 一般而言，前端三大框架说的就是angular、vue、react。以现在的情况来说：
 * angular：谷歌开发，相比之下上手难度大，有许多譬如依赖注入之类的后端概念。
-* vue：著名的尤雨溪老师开发，上手难度较为简单，国内应用面也很广。
+* vue：著名的尤雨溪大佬开发，上手难度较为简单，国内应用面也很广。
 * react：Facebook开发，上手难度一般，应用面最广。
 
 对于框架的选择问题也可以参考[尤大的答案](https://www.quora.com/Which-should-I-learn-Mithril-Vue-or-Angular/answer/Evan-You-3)，但无论如何，先打好JS的基础是必须的。  
