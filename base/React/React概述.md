@@ -116,8 +116,30 @@ serviceWorker.unregister(); //正如上方的原文注释，这一行是用来�
 ReactDOM.render(element, container[, callback])
 ```
 它在提供的container（DOM节点）中渲染（或更新）element（即react元素），如果有callback，则会在渲染（或更新）完毕后执行回调函数。  
-我们查看根目录的`public/index.html`（我们实际操作的网页），其中的主体部分仅有一行`<div id="root"></div>`，
+我们查看根目录的`public/index.html`（我们实际操作的网页），其中的主体部分仅有一行`<div id="root"></div>`，也就是说`ReactDOM.render`将它的第一个参数（react元素）渲染到了整个网页上，所以，在这个react元素中，`React.StrictMode`限制了严格模式，而其内部就是整个网页的代码了。  
 
+react元素使用的就是名为JSX的语法格式，JSX类似模板语言，只要记住：**由<></>、< />包裹的是html语言，由{}包裹的是js语言**
+```js
+const name = 'Josh Perez';
+const element = <h1>Hello, {name}</h1>;
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
+上例中h1标签内部是html语言，所以是文本格式的，然而其中的name由{}包裹，于是这个name是js语言中的参数，指代上面的常量name，最后的输出就为“Hello, Josh Perez”。学会了这一点，我们就可以尝试着把`index.js`代码中的`<App />`给替换成简单的字符串或者其他内容，并在浏览器本地3000端口中查看效果了。
+```js
+//修改index.js
+const name = 'Josh Perez';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <h1>Hello, {name}</h1>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
 
 ### 接下来看
 
