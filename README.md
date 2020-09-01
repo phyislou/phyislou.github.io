@@ -2,11 +2,11 @@
 
 
 ### 前端开发
-* 前端技术基础：[HTML+CSS](base/引言.md)
+* 前端技术基础：[HTML+CSS](.\base/引言.md)
 * 前端技术基础：[JS]()
 * 前后台交互：[Ajax等]()
 * 后端技术：[Nodejs->Nestjs]()
-* 前端框架：[React](base\React\React概述.md)
+* 前端框架：[React](.\base\React\React概述.md)
 * 跨平台开发：[ReactNative]()
 
 ![PC图标](img\top-1.png '好难啊')

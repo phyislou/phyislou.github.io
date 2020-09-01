@@ -1,4 +1,4 @@
-上一节：[React概述](base\React\React概述.md)
+上一节：[React概述](..\React概述.md)
 
 # JSX简介
 

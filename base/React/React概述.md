@@ -79,7 +79,7 @@ if (['build', 'eject', 'start', 'test'].includes(script)) {
     /*---code---*/
   }
 ```
-关于如何配置webpack请查看[webpack](base\Webpack\Webpack.md)一章。  
+关于如何配置webpack请查看[webpack](..\Webpack\Webpack.md)一章。  
 在这里，大部分的路径都配置在`config/paths.js`中，而上面的`appIndexJs`参数就表明入口正是在根目录下的`src/index`中：
 ```js
 module.exports = {
@@ -145,7 +145,7 @@ ReactDOM.render(
 
 接下来的目标皆以react的官方文档为准：
 1. react核心知识：
-   1. [JSX简介](base\React\MainConcepts\JSX简介.md)
+   1. [JSX简介](.\MainConcepts\JSX简介.md)
    2. 元素渲染
    3. 组件 & Props
    4. State & 生命周期
@@ -203,6 +203,6 @@ ReactDOM.render(
 
 ### 拓展
 
-想要了解create-react-app的构建过程或是要从零开始构建一个react项目的话，请见：[实现create-react-app](base\React\拓展：实现create-react-app.md)
+想要了解create-react-app的构建过程或是要从零开始构建一个react项目的话，请见：[实现create-react-app](.\拓展：实现create-react-app.md)
 
 想要了解`ReactDOM.render`的具体运作方式的话，请见：[ReactDOM.render，初次渲染](https://www.jianshu.com/p/2d8062e94ed3)
