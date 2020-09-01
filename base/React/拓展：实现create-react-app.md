@@ -1,0 +1,1 @@
+详情参考：[实现create-react-app](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658create-react-app)
