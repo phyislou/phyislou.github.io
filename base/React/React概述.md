@@ -5,6 +5,66 @@
 * [官方文档与教程](https://zh-hans.reactjs.org/)
 * [github的代码仓库](https://github.com/facebook/react)
 
+### 学习React的章节目录：
+
+以下内容皆以react的官方文档为基础：
+1. react核心知识：
+   1. [JSX简介](./MainConcepts/JSX简介.md)
+   2. [元素渲染](./MainConcepts/元素渲染.md)
+   3. [组件&Props](./MainConcepts/组件&Props.md)
+   4. [State&生命周期](./MainConcepts/State&生命周期.md)
+   5. 事件处理
+   6. 条件渲染
+   7. 列表 & Key
+   8. 表单
+   9.  状态提升
+   10. 组合 vs 继承
+   11. React 哲学
+2. 高级拓展：
+   1. 无障碍
+   2. 代码分割
+   3. Context
+   4. 错误边界
+   5. Refs 转发
+   6. Fragments
+   7. 高阶组件
+   8. 与第三方库协同
+   9. 深入JSX
+   10. 性能优化
+   11. Portals
+   12. Profiler
+   13. 不使用 ES6
+   14. 不使用 JSX
+   15. 协调
+   16. Refs & DOM
+   17. Render Props
+   18. 静态类型检查
+   19. 严格模式
+   20. 使用 PropTypes 类型检查
+   21. 非受控组件
+   22. Web Components
+3.  Hook：
+    1. Hook 简介
+    2. Hook 概览
+    3. 使用 State Hook
+    4. 使用 Effect Hook
+    5. Hook 规则
+    6. 自定义 Hook
+    7. Hook API 索引
+    8. Hooks FAQ
+4. 测试：
+   1. 测试概览
+   2. 测试技巧
+   3. 测试环境
+5. Concurrent 模式
+   1. 介绍 Concurrent 模式
+   2. Suspense 用于数据获取
+   3. Concurrent UI 模式
+   4. 采用 Concurrent 模式
+   5. Concurrent 模式 API 参考
+6. FAQ
+7. API参考
+
 ### 网页框架
 
 一般而言，前端三大框架说的就是angular、vue、react。以现在的情况来说：
@@ -143,63 +203,8 @@ ReactDOM.render(
 
 ### 接下来看
 
-接下来的目标皆以react的官方文档为准：
-1. react核心知识：
-   1. [JSX简介](./MainConcepts/JSX简介.md)
-   2. [元素渲染](./MainConcepts/元素渲染.md)
-   3. [组件&Props](./MainConcepts/组件&Props.md)
-   4. [State&生命周期](./MainConcepts/State&生命周期.md)
-   5. 事件处理
-   6. 条件渲染
-   7. 列表 & Key
-   8. 表单
-   9.  状态提升
-   10. 组合 vs 继承
-   11. React 哲学
-2. 高级拓展：
-   1. 无障碍
-   2. 代码分割
-   3. Context
-   4. 错误边界
-   5. Refs 转发
-   6. Fragments
-   7. 高阶组件
-   8. 与第三方库协同
-   9. 9. 深入 JSX
-   10. 性能优化
-   11. Portals
-   12. Profiler
-   13. 不使用 ES6
-   14. 不使用 JSX
-   15. 协调
-   16. Refs & DOM
-   17. Render Props
-   18. 静态类型检查
-   19. 严格模式
-   20. 使用 PropTypes 类型检查
-   21. 非受控组件
-   22. Web Components
-3.  Hook：
-    1. Hook 简介
-    2. Hook 概览
-    3. 使用 State Hook
-    4. 使用 Effect Hook
-    5. Hook 规则
-    6. 自定义 Hook
-    7. Hook API 索引
-    8. Hooks FAQ
-4. 测试：
-   1. 测试概览
-   2. 测试技巧
-   3. 测试环境
-5. Concurrent 模式
-   1. 介绍 Concurrent 模式
-   2. Suspense 用于数据获取
-   3. Concurrent UI 模式
-   4. 采用 Concurrent 模式
-   5. Concurrent 模式 API 参考
-6. FAQ
-7. API参考
+了解了上面这个程序的构成，我们就可以开始从学习目录中的“react核心知识”开始一节一节往下看了。  
+首先第一节就是[JSX简介](./MainConcepts/JSX简介.md)。
 
 ### 拓展
 

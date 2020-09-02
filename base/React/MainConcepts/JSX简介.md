@@ -1,9 +1,4 @@
-<div style='display:flex;justify-content:space-between;'>
-<div>上一节：<a href='../React概述.md'>React概述</a></div>
-<div><a href='../React概述.md'>章节列表</a></div>
-<div>下一节：<a href='./元素渲染.md'>元素渲染</a></div>
-</div>
-
+「[React概述](../React概述.md)」<--「[章节列表](../React概述.md)」-->「[元素渲染](./元素渲染.md)」
 ***
 
 # JSX简介
@@ -147,9 +142,4 @@ const element = {
 这个变量就是我们在上一节中提到过的“react元素”了，它描述了我们希望在屏幕上看到的内容。React通过读取这些对象，然后使用它来构建DOM并且保持随时更新。
 
 ***
-
-<div style='display:flex;justify-content:space-between;'>
-<div>上一节：<a href='../React概述.md'>React概述</a></div>
-<div><a href='../React概述.md'>章节列表</a></div>
-<div>下一节：<a href='./元素渲染.md'>元素渲染</a></div>
-</div>
+「[React概述](../React概述.md)」<--「[章节列表](../React概述.md)」-->「[元素渲染](./元素渲染.md)」

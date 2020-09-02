@@ -1,9 +1,4 @@
-<div style='display:flex;justify-content:space-between;'>
-<div>上一节：<a href='./元素渲染.md'>元素渲染</a></div>
-<div><a href='../React概述.md'>章节列表</a></div>
-<div>下一节：<a href='./State&生命周期.md'>State&生命周期</a></div>
-</div>
-
+「[元素渲染](./元素渲染.md)」<--「[章节列表](../React概述.md)」-->「[State&生命周期](./State&生命周期.md)」
 ***
 
 # 组件&Props
@@ -37,12 +32,31 @@ class Welcome extends React.Component {
 
 ### 渲染组件
 
+之前，我们遇到的React元素都只是由DOM标签（`<div></div>`、`<img />`等等）组成的元素，但事实上React元素也是可以由用户自定义组件的：
+```js
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+const element = <Welcome name="Sara" />;
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
+当React元素为用户自定义组件时，它会将JSX所接收的属性（在这里就是`name="Sara"`）以及子组件转换为单个对象传递给组件，这个对象被称之为 “props”。
+
+让我们来按照步骤看一看这段代码中发生了什么：
+1. 我们调用`ReactDOM.render()`函数，并传入`<Welcome name="Sara" />`作为参数。
+2. React 调用 Welcome 组件，并将`{name: 'Sara'}`作为 props 传入。
+3. Welcome 组件将`<h1>Hello, Sara</h1>`元素作为返回值。
+4. React DOM 将 DOM 高效地更新为`<h1>Hello, Sara</h1>`。
+
+* 注意:**组件名称必须以大写字母开头**。
+  
+  React 会将以小写字母开头的组件视为原生 DOM 标签。例如，`<div />` 代表 HTML 的 div 标签，而 `<Welcome />` 则代表一个组件，并且需在作用域内使用 Welcome。想要了解其原因可以查看[深入JSX](../AdvanacedGuides/深入JSX.md)。
+
+### 组合组件
 
 ***
-
-<div style='display:flex;justify-content:space-between;'>
-<div>上一节：<a href='./元素渲染.md'>元素渲染</a></div>
-<div><a href='../React概述.md'>章节列表</a></div>
-<div>下一节：<a href='./State&生命周期.md'>State&生命周期</a></div>
-</div>
-
+「[元素渲染](./元素渲染.md)」<--「[章节列表](../React概述.md)」-->「[State&生命周期](./State&生命周期.md)」
