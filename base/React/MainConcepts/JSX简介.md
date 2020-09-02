@@ -1,4 +1,10 @@
-上一节：[React概述](..\React概述.md)
+<div style='display:flex;justify-content:space-between;'>
+<div>上一节：<a href='../React概述.md'>React概述</a></div>
+<div><a href='../React概述.md'>章节列表</a></div>
+<div>下一节：<a href='./元素渲染.md'>元素渲染</a></div>
+</div>
+
+***
 
 # JSX简介
 
@@ -55,8 +61,8 @@ const element = <div tabIndex="0"></div>;
 const element = <div tabIndex={table.ind}></div>;
 const element = <img src={user.avatarUrl}></img>;
 ```
-注意1：属性值要不是"..."，要不是{...}，两者不要混用哦。
-注意2：React DOM使用JS的`camelCase`（小驼峰命名）来定义属性的名称，比如，JSX里的`class`变成了`className`，而`tabindex`则变为`tabIndex`。
+* 注意1：属性值要不是"..."，要不是{...}，两者不要混用哦。
+* 注意2：React DOM使用JS的`camelCase`（小驼峰命名）来定义属性的名称，比如，JSX里的`class`变成了`className`，而`tabindex`则变为`tabIndex`。
 
 ### JSX的行内样式
 
@@ -88,6 +94,62 @@ const element = <div style={eleStyle}></div>;
 1. 属性名要从css的格式改变为小驼峰命名格式，并且在JSX中仅支持固定的几十个常用属性名（也就是说不支持像“--customColor”这样的自定义属性）
 2. 由于实际上是一个js对象，所以属性值只能为字符串或者数字，像“0.8em”这样的值不能直接写入，请先改成字符串`fontSize: '0.8em'`
 
-<br />
+### 指定子元素
 
-下一节：[元素渲染]()
+与html标签的写法一样，我们可以用`/>`来闭合标签，也可以在标签内部继续添加标签：
+```js
+//闭合标签
+const element = <img src={user.avatarUrl} />;
+
+//子标签
+const element = (
+  <div>
+    <h1>Hello!</h1>
+    <h2>Good to see you here.</h2>
+  </div>
+);
+```
+
+### 防止注入攻击
+
+ReactDOM在渲染所有输入内容之前都会进行转义。所有的内容在渲染之前都会被转换成字符串。这样可以有效地防止XSS跨站脚本攻击。
+
+### 表示对象
+
+实际上，Babel会把JSX转译成一个函数`React.createElement()`来调用。
+所以事实上像下述的JSX代码：
+```js
+const element = (
+  <h1 className="greeting">
+    Hello, world!
+  </h1>
+);
+```
+会被编译成：
+```js
+const element = React.createElement(
+  'h1',
+  {className: 'greeting'},
+  'Hello, world!'
+);
+```
+实际编译过程中，`React.createElement()`会预先对代码做检查，无误后会创建一个下方的代码结构：
+```js
+// 注意：这是简化过的结构
+const element = {
+  type: 'h1',
+  props: {
+    className: 'greeting',
+    children: 'Hello, world!'
+  }
+};
+```
+这个变量就是我们在上一节中提到过的“react元素”了，它描述了我们希望在屏幕上看到的内容。React通过读取这些对象，然后使用它来构建DOM并且保持随时更新。
+
+***
+
+<div style='display:flex;justify-content:space-between;'>
+<div>上一节：<a href='../React概述.md'>React概述</a></div>
+<div><a href='../React概述.md'>章节列表</a></div>
+<div>下一节：<a href='./元素渲染.md'>元素渲染</a></div>
+</div>

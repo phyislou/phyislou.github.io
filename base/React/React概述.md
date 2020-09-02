@@ -146,9 +146,9 @@ ReactDOM.render(
 接下来的目标皆以react的官方文档为准：
 1. react核心知识：
    1. [JSX简介](./MainConcepts/JSX简介.md)
-   2. 元素渲染
-   3. 组件 & Props
-   4. State & 生命周期
+   2. [元素渲染](./MainConcepts/元素渲染.md)
+   3. [组件&Props](./MainConcepts/组件&Props.md)
+   4. [State&生命周期](./MainConcepts/State&生命周期.md)
    5. 事件处理
    6. 条件渲染
    7. 列表 & Key
