@@ -87,7 +87,7 @@ class Clock extends React.Component {
     ```jsx
     class Clock extends React.Component {
       constructor(props) {
-        super(props);
+        super(props);//注意这里
         this.state = {date: new Date()};
       }
 
@@ -112,6 +112,65 @@ class Clock extends React.Component {
     ```
 
 经过这三步，我们已经将Clock组件改造完成。
+```jsx
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Clock />,
+  document.getElementById('root')
+);
+```
+
+但事实上由于对组件中的state我们并没有用计时器去每秒更新它，所以现在组件还不会刷新。
+
+### 将生命周期方法添加到Class中
+
+在具有许多组件的应用程序中，当组件被销毁时释放所占用的资源是非常重要的。
+
+对于上例中的Clock组件，它第一次被渲染到DOM中的时候，我们就需要为其设置一个计时器。这在React中被称为“**挂载（mount）**”。
+
+同时，当DOM中的Clock组件被删除的时候，我们应该要清除计时器。这在React中被称为“**卸载（unmount）**”。
+
+我们可以为class组件声明一些特殊的方法，当组件挂载或卸载时就会去执行这些方法，也就是所谓的“生命周期方法”：
+```jsx
+class Clock extends React.Component {
+  /*---生命周期的初始化阶段开始---*/
+  //defaultProps //step1:设置组件的默认属性
+  constructor(props) {/*---code---*/} //step2:设置组件的初始化状态
+  //componentWillMount() //step3:被废弃组件
+  //render() //step4:组件渲染
+  componentDidMount() {} //step5:组件已经被渲染到页面中后触发
+  /*---生命周期的初始化阶段结束---*/
+  /*---生命周期的运行阶段开始---*/
+  //componentWillReceiveProps(nextProps) {} //step1:被废弃组件，组件接收到属性时触发
+  shouldComponentUpdate(nextProps, nextState) {} //step2:当组件接收到新属性，或者组件的状态发生改变时触发。组件首次渲染时并不会触发,这个生命周期的返回值是布尔值，会显示后续是否进行重新的渲染。详情请查看“高级指引：性能优化”一节
+  //componentWillUpdate(nextProps, nextState) {} //step3:被废弃组件，组件即将被更新时触发
+  componentDidUpdate(nextProps, nextState) {} //组件被更新完成后触发。页面中产生了新的DOM的元素，可以进行DOM操作
+  /*---生命周期的运行阶段结束---*/
+  /*---生命周期的销毁阶段开始---*/
+  componentWillUnmount() {} //对轮询的请求的清理，或是对定时器的清理。
+  /*---生命周期的销毁阶段结束---*/
+
+  render() {/*---code---*/}
+}
+```
+
+作为对生命周期的描述，我们可以先来看一下这张图：
+![react-04-1](../../../img/react-04-1.png)
 
 ***
 
