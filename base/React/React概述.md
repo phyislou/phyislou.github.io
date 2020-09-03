@@ -9,19 +9,19 @@
 
 以下内容皆以react的官方文档为基础：
 1. react核心知识：
-   1. [JSX简介](./MainConcepts/JSX简介.md)
-   2. [元素渲染](./MainConcepts/元素渲染.md)
-   3. [组件&Props](./MainConcepts/组件&Props.md)
-   4. [State&生命周期](./MainConcepts/State&生命周期.md)
-   5. [事件处理](./MainConcepts/事件处理.md)
-   6. 条件渲染
-   7. 列表 & Key
-   8. 表单
-   9.  状态提升
-   10. 组合 vs 继承
-   11. React 哲学
+   1. [JSX简介](./MainConcepts/01-JSX简介.md)
+   2. [元素渲染](./MainConcepts/02-元素渲染.md)
+   3. [组件&Props](./MainConcepts/03-组件&Props.md)
+   4. [State&生命周期](./MainConcepts/04-State&生命周期.md)
+   5. [事件处理](./MainConcepts/05-事件处理.md)
+   6. [条件渲染](./MainConcepts/06-条件渲染.md)
+   7. [列表&Key](./MainConcepts/07-列表&Key.md)
+   8. [表单](./MainConcepts/08-表单.md)
+   9.  [状态提升](./MainConcepts/09-状态提升.md)
+   10. [组合vs继承](./MainConcepts/10-组合vs继承.md)
+   11. [React哲学](./MainConcepts/11-React哲学.md)
 2. 高级拓展：
-   1. 无障碍
+   1. [无障碍](./AdvanacedGuides/01-无障碍.md)
    2. 代码分割
    3. Context
    4. 错误边界
@@ -29,7 +29,7 @@
    6. Fragments
    7. 高阶组件
    8. 与第三方库协同
-   9. 深入JSX
+   9. [深入JSX](./AdvanacedGuides/09-深入JSX.md)
    10. 性能优化
    11. Portals
    12. Profiler
@@ -101,7 +101,7 @@ npm start # 编译当项目，并打开 http://localhost:3000/
 ```
 
 可以见到，实际上执行的是`react-scripts start`命令，然后在根目录的node_modules（模块管理）文件夹中找到react-scripts插件，在`bin/react-scripts.js`之中有下列代码：
-```js
+```jsx
 const scriptIndex = args.findIndex(
   x => x === 'build' || x === 'eject' || x === 'start' || x === 'test'
 ); //寻找指令位置
@@ -124,7 +124,7 @@ if (['build', 'eject', 'start', 'test'].includes(script)) {
 ```
 
 打开`start.js`，我们可以在`compiler -> config -> configFactory -> config -> webpack.config`（即`config/webpack.config.js`）中找到webpack的配置文件，我们的项目代码就定义在entry参数的`paths.appIndexJs`中：
-```js
+```jsx
   return {
     entry: [
       /*---notes---*/
@@ -141,7 +141,7 @@ if (['build', 'eject', 'start', 'test'].includes(script)) {
 ```
 关于如何配置webpack请查看[webpack](../Webpack/Webpack.md)一章。  
 在这里，大部分的路径都配置在`config/paths.js`中，而上面的`appIndexJs`参数就表明入口正是在根目录下的`src/index`中：
-```js
+```jsx
 module.exports = {
   /*---code---*/
   appIndexJs: resolveModule(resolveApp, 'src/index'),
@@ -149,7 +149,7 @@ module.exports = {
 };
 ```
 于是我们打开根目录下的`src/index.js`，这个入口函数非常简短：
-```js
+```jsx
 import React from 'react'; //导入react的核心功能
 import ReactDOM from 'react-dom'; //将虚拟DOM渲染到DOM中
 import './index.css';
@@ -172,14 +172,14 @@ serviceWorker.unregister(); //正如上方的原文注释，这一行是用来�
 ```
 `index.js`中做了两件事：1. 给代码添加严格模式；2. 取消注册了离线缓存，这两点都好理解，但难点在于在`ReactDOM.render`中我们碰上了react自创的模板语言JSX。  
 首先让我们来看看`ReactDOM.render`方法的API：
-```js
+```jsx
 ReactDOM.render(element, container[, callback])
 ```
 它在提供的container（DOM节点）中渲染（或更新）element（即react元素），如果有callback，则会在渲染（或更新）完毕后执行回调函数。  
 我们查看根目录的`public/index.html`（我们实际操作的网页），其中的主体部分仅有一行`<div id="root"></div>`，也就是说`ReactDOM.render`将它的第一个参数（react元素）渲染到了整个网页上，所以，在这个react元素中，`React.StrictMode`限制了严格模式，而其内部就是整个网页的代码了。  
 
 react元素使用的就是名为JSX的语法格式，JSX类似模板语言，只要记住：**由<></>、< />包裹的是html语言，由{}包裹的是js语言**
-```js
+```jsx
 const name = 'Josh Perez';
 const element = <h1>Hello, {name}</h1>;
 
@@ -189,7 +189,7 @@ ReactDOM.render(
 );
 ```
 上例中h1标签内部是html语言，所以是文本格式的，然而其中的name由{}包裹，于是这个name是js语言中的参数，指代上面的常量name，最后的输出就为“Hello, Josh Perez”。学会了这一点，我们就可以尝试着把`index.js`代码中的`<App />`给替换成简单的字符串或者其他内容，并在浏览器本地3000端口中查看效果了。
-```js
+```jsx
 //修改index.js
 const name = 'Josh Perez';
 
@@ -204,7 +204,7 @@ ReactDOM.render(
 ### 接下来看
 
 了解了上面这个程序的构成，我们就可以开始从学习目录中的“react核心知识”开始一节一节往下看了。  
-首先第一节就是[JSX简介](./MainConcepts/JSX简介.md)。
+首先第一节就是[JSX简介](./MainConcepts/01-JSX简介.md)。
 
 ### 拓展
 

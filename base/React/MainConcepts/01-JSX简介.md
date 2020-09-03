@@ -1,4 +1,4 @@
-「[React概述](../React概述.md)」<--「[章节列表](../React概述.md)」-->「[元素渲染](./元素渲染.md)」
+「[React概述](../React概述.md)」<--「[章节列表](../React概述.md)」-->「[元素渲染](./02-元素渲染.md)」
 
 ***
 
@@ -15,7 +15,7 @@ React 并没有采用“将标记（h5）与逻辑（js）分离到不同文件�
 ### JSX运用
 
 上一节已经简单的使用了一下JSX，这次我们将在{}当中，插入函数：
-```js
+```jsx
 function formatName(user) {
   return user.firstName + ' ' + user.lastName;
 }
@@ -36,7 +36,7 @@ const element = (
 ### JSX作为表达式
 
 JSX事实上是一个表达式，编译后它会变成一个函数调用，返回一个函数对象。换句话说，我们可以在if/for循环中使用JSX，可以将JSX赋值给变量，也可以把JSX当作参数传入，也可以将JSX作为函数的返回值：
-```js
+```jsx
 function func(para) {
   if (para) {
     return <h1>balabala</h1>;
@@ -49,11 +49,11 @@ function func(para) {
 ### JSX中的标签属性
 
 与正常的html标签写法相同，我们可以这样写：
-```js
+```jsx
 const element = <div tabIndex="0"></div>;
 ```
 相对应的，使用JSX的格式也是可以的
-```js
+```jsx
 const element = <div tabIndex={table.ind}></div>;
 const element = <img src={user.avatarUrl}></img>;
 ```
@@ -63,7 +63,7 @@ const element = <img src={user.avatarUrl}></img>;
 ### JSX的行内样式
 
 JSX设置外联样式是很简单的：
-```js
+```jsx
 //文件“style1.css”为：
 {
   .divStyle {
@@ -78,11 +78,11 @@ const element = <div className={Style1.divStyle}></div>;
 ```
 
 而如果想要使用行内样式时，我们需要写成：
-```js
+```jsx
 const element = <div style={{backgroundColor: 'red', fontSize: 32}}></div>;
 ```
 基本格式就是`style={{attr1: val, attr2: val, ...}}`，外面一层大括号表示里面为JS代码，里面一层大括号表示这是一个对象，所以上述代码也可以写成：
-```js
+```jsx
 const eleStyle = {backgroundColor: 'red', fontSize: 32};
 const element = <div style={eleStyle}></div>;
 ```
@@ -93,7 +93,7 @@ const element = <div style={eleStyle}></div>;
 ### 指定子元素
 
 与html标签的写法一样，我们可以用`/>`来闭合标签，也可以在标签内部继续添加标签：
-```js
+```jsx
 //闭合标签
 const element = <img src={user.avatarUrl} />;
 
@@ -114,7 +114,7 @@ ReactDOM在渲染所有输入内容之前都会进行转义。所有的内容在
 
 实际上，Babel会把JSX转译成一个函数`React.createElement()`来调用。
 所以事实上像下述的JSX代码：
-```js
+```jsx
 const element = (
   <h1 className="greeting">
     Hello, world!
@@ -122,7 +122,7 @@ const element = (
 );
 ```
 会被编译成：
-```js
+```jsx
 const element = React.createElement(
   'h1',
   {className: 'greeting'},
@@ -130,7 +130,7 @@ const element = React.createElement(
 );
 ```
 实际编译过程中，`React.createElement()`会预先对代码做检查，无误后会创建一个下方的代码结构：
-```js
+```jsx
 // 注意：这是简化过的结构
 const element = {
   type: 'h1',
@@ -144,4 +144,4 @@ const element = {
 
 ***
 
-「[React概述](../React概述.md)」<--「[章节列表](../React概述.md)」-->「[元素渲染](./元素渲染.md)」
+「[React概述](../React概述.md)」<--「[章节列表](../React概述.md)」-->「[元素渲染](./02-元素渲染.md)」
