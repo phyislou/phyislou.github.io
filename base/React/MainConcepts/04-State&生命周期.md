@@ -68,6 +68,51 @@ class Clock extends React.Component {
 
 ### 向class组件中添加局部的state
 
+我们通过以下三步将date从props移动到state中：
+
+1. 把`render()`方法中的`this.props.date`替换成`this.state.date`，于是将从父组件获取的数据（props）改为从本组件内（state）获取：
+    ```jsx
+    class Clock extends React.Component {
+      render() {
+        return (
+          <div>
+            <h1>Hello, world!</h1>
+            <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+          </div>
+        );
+      }
+    }
+    ```
+2. 添加一个class构造函数，然后在该函数中为`this.state`赋初值：
+    ```jsx
+    class Clock extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {date: new Date()};
+      }
+
+      render() {
+        return (
+          <div>
+            <h1>Hello, world!</h1>
+            <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+          </div>
+        );
+      }
+    }
+    ```
+    在这个构造器中，在使用`this.state`之前，先定义了一句`super(props)`，请务必要写上这一句，不然this就失效了，详细的原因请看：[super(props)](https://segmentfault.com/a/1190000018084870)。
+    `super(props)`将props传递到父类的构造函数中，我们在Class组件中应该始终使用props参数来调用父类的构造函数。
+3. 由于在`this.state`中添加了data属性，所以要移除`<Clock />`元素中的date属性：
+    ```jsx
+    ReactDOM.render(
+      <Clock />,
+      document.getElementById('root')
+    );
+    ```
+
+经过这三步，我们已经将Clock组件改造完成。
+
 ***
 
 「[组件&Props](./03-组件&Props.md)」<--「[章节列表](../React概述.md)」-->「[事件处理](./05-事件处理.md)」
