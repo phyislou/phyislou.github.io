@@ -276,7 +276,23 @@ export default App;
 
 #### 2. State的更新可能是异步的
 
+出于性能考虑，React 可能会把多个`setState()`调用合并成一个调用。
 
+这里也衍生出了一个问题：`setState()`是同步的呢还是异步的呢？  
+（当前react下的）答案是：
+1. 在组件生命周期中或者react事件绑定中，setState是通过异步更新的。
+2. 在延时的回调或者原生事件绑定的回调中调用setState不一定是异步的。
+
+在之后的react更新中，react倾向于将setState逐步改造为异步方法。
+
+在这里推荐Dan Abramov（`redux`、以及我们很熟悉的`Create React App`的作者）的一篇博客，详细地解释了这个问题：  
+[How Does setState Know What to Do?](https://overreacted.io/how-does-setstate-know-what-to-do/)
+
+题外话：Dan Abramov大佬的文章写得深入浅出通俗易懂，非常推荐去人家的博客下学习。
+
+回过来说，因为`this.props`和`this.state`可能会异步更新，所以请不要依赖他们的值来更新下一个状态。比如，对于下面的代码：
+
+可能会无法更新计数器
 
 ***
 
