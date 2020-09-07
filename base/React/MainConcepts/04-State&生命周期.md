@@ -290,9 +290,70 @@ export default App;
 
 题外话：Dan Abramov大佬的文章写得深入浅出通俗易懂，非常推荐去人家的博客下学习。
 
-回过来说，因为`this.props`和`this.state`可能会异步更新，所以请不要依赖他们的值来更新下一个状态。比如，对于下面的代码：
+回过来说，因为`this.props`和`this.state`可能会异步更新，所以请不要依赖他们的值来更新下一个状态。比如，对于下面的代码，它可能会无法更新计数器：
+```jsx
+// Wrong
+this.setState({
+  counter: this.state.counter + this.props.increment,
+});
+```
+如果依然想用`this.props`和`this.state`作为参数传入`setState()`来更新值的话，那我们也可以让`setState()`接收一个函数而不是一个对象。这个函数用上一个state作为第一个参数，将此次更新被应用时的props做为第二个参数：
+```jsx
+// Correct
+this.setState((state, props) => ({
+  counter: state.counter + props.increment
+}));
+```
 
-可能会无法更新计数器
+`setState()`实现异步的方法就是广为人知的[batchUpdate策略](https://zhuanlan.zhihu.com/p/78516581)。简单理解，就是说react有大大小小的事务（Transation），对于每个事务都会有一个`isBatchingUpdates`的标志位，标志位为真时统一处理事务当中的更新（`setState()`）提交。  
+参考文章：
+* [react源码阅读笔记（3）batchedUpdates与Transaction](https://www.jianshu.com/p/aa6744fdb845)
+
+#### 3. State的更新会被合并
+
+当你调用`setState()`的时候，React会把我们提供的对象合并到当前的state。比如说，我们的state包含了`posts`和`comments`两个独立的变量：
+```jsx
+constructor(props) {
+  super(props);
+  this.state = {
+    posts: [],
+    comments: []
+  };
+}
+```
+我们可以分别调用`setState()`来更新它们而且不会影响另一个变量：
+```jsx
+componentDidMount() {
+  fetchPosts().then(response => {
+    this.setState({
+      posts: response.posts
+    });
+  });
+
+  fetchComments().then(response => {
+    this.setState({
+      comments: response.comments
+    });
+  });
+}
+```
+由于这里的合并是浅合并，所以`this.setState({comments})`完整保留了`this.state.posts`，但是完全替换了`this.state.comments`。
+
+### 数据是向下流动的
+
+不管是父组件或是子组件都无法知道某个组件是有状态的还是无状态的，并且它们也并不关心它是函数组件还是 class 组件。这就是为什么称state为局部的或是封装的的原因。除了拥有并设置了它的组件，其他组件都无法访问。
+
+组件可以选择把它的state作为props向下传递到它的子组件中：
+```jsx
+<FormattedDate date={this.state.date} />
+```
+FormattedDate 组件会在其 props 中接收参数 date，但是组件本身无法知道它是来自于 Clock 的 state，或是 Clock 的 props，还是手动输入的。
+
+这通常会被叫做“自上而下”或是“单向”的数据流。任何的state总是所属于特定的组件，而且从该state派生的任何数据或UI只能影响树中“低于”它们的组件。
+
+如果我们把一个以组件构成的树想象成一个props的数据瀑布的话，那么每一个组件的 state 就像是在任意一点上给瀑布增加额外的水源，但是它只能向下流动。
+
+在React应用中，组件是有状态组件还是无状态组件属于组件实现的细节，它可能会随着时间的推移而改变。我们可以在有状态的组件中使用无状态的组件，反之亦然。
 
 ***
 
