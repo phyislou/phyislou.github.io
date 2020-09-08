@@ -79,9 +79,9 @@ const element = <div className={Style1.divStyle}></div>;
 
 而如果想要使用行内样式时，我们需要写成：
 ```jsx
-const element = <div style={{backgroundColor: 'red', fontSize: 32}}></div>;
+const element = <div style=\{\{backgroundColor: 'red', fontSize: 32\}\}></div>;
 ```
-基本格式就是`style={{attr1: val, attr2: val, ...}}`，外面一层大括号表示里面为JS代码，里面一层大括号表示这是一个对象，所以上述代码也可以写成：
+基本格式就是`style=\{\{attr1: val, attr2: val, ...\}\}`，外面一层大括号表示里面为JS代码，里面一层大括号表示这是一个对象，所以上述代码也可以写成：
 ```jsx
 const eleStyle = {backgroundColor: 'red', fontSize: 32};
 const element = <div style={eleStyle}></div>;
