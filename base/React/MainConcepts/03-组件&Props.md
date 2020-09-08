@@ -8,7 +8,7 @@
 
 组件，从概念上类似于JS函数。它接受任意的入参（也就是“props”），并返回用于描述页面展示内容的React元素。
 
-### 函数组件与class组件
+## 函数组件与class组件
 
 函数组件是较为简单的实现方式：
 ```jsx
@@ -31,7 +31,7 @@ class Welcome extends React.Component {
 
 * 注意：之后将会以class组件为基础讲解，但由于函数组件是之后React Hook的编写基础，所以也是需要比较熟悉的哦。
 
-### 渲染组件
+## 渲染组件
 
 之前，我们遇到的React元素都只是由DOM标签（`<div></div>`、`<img />`等等）组成的元素，但事实上React元素也是可以由用户自定义组件的：
 ```jsx
@@ -57,7 +57,7 @@ ReactDOM.render(
   
   React 会将以小写字母开头的组件视为原生 DOM 标签。例如，`<div />` 代表 HTML 的 div 标签，而 `<Welcome />` 则代表一个组件，并且需在作用域内使用 Welcome。想要了解其原因可以查看[深入JSX](../AdvanacedGuides/深入JSX.md)。
 
-### 组合组件
+## 组合组件
 
 组件可以在输出中引用其他组件，形成组件的套用，这可以使我们能够将不同层级的逻辑分别实现到各自的组件中，比如按钮，表单，对话框等功能的实现，均可以封装到不同的组件当中。  
 例如，我们可以创建一个可以多次渲染Welcome组件的App组件：
@@ -78,7 +78,7 @@ function App() {
 ```
 一般情况下，每个新的React应用程序的顶层组件都是App组件。
 
-### 提取组件
+## 提取组件
 
 我们也可以将一个复杂逻辑组件拆分为更小的组件。  
 例如，参考如下Comment组件：
@@ -185,7 +185,7 @@ function Comment(props) {
 
 这样，一个有着三层逻辑（Comment->UserInfo->Avatar）的组件就完成了，像是UserInfo、Avatar这样的组件也可以在其他地方进行多次复用。根据经验来看，如果UI中有一部分被多次使用（Button，Panel，Avatar），或者组件本身就足够复杂（App，FeedStory，Comment），那么它就是一个可提取出独立组件的候选项。
 
-### Props的只读性
+## Props的只读性
 
 组件无论是使用函数声明还是通过class声明，都决不能修改自身的props。这是实现react的核心特征“单向数据流动”所必须的基本要求。
 

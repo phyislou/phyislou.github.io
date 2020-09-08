@@ -5,7 +5,7 @@
 * [官方文档与教程](https://zh-hans.reactjs.org/)
 * [github的代码仓库](https://github.com/facebook/react)
 
-### 学习React的章节目录：
+## 学习React的章节目录：
 
 以下内容皆以react的官方文档为基础：
 1. react核心知识：
@@ -65,7 +65,7 @@
 6. FAQ
 7. API参考
 
-### 网页框架
+## 网页框架
 
 一般而言，前端三大框架说的就是angular、vue、react。以现在的情况来说：
 * angular：谷歌开发，相比之下上手难度大，有许多譬如依赖注入之类的后端概念。
@@ -75,7 +75,7 @@
 对于框架的选择问题也可以参考[尤大的答案](https://www.quora.com/Which-should-I-learn-Mithril-Vue-or-Angular/answer/Evan-You-3)，但无论如何，先打好JS的基础是必须的。  
 我在这里选择的是react，主要的原因还是其组件化的理念与庞大的生态环境，当然，也是为了之后能够融入ReactNative跨平台开发做准备。（选择RN的原因还是从react衔接到RN足够简单，不像flutter与weex(uni-app)）
 
-### 创建一个模板应用
+## 创建一个模板应用
 
 Facebook官方提供了一个已经配置好的SPA单页应用`Create React App`，非常适合新手参考学习。实现方式如下：
 ```shell
@@ -201,12 +201,12 @@ ReactDOM.render(
 );
 ```
 
-### 接下来看
+## 接下来看
 
 了解了上面这个程序的构成，我们就可以开始从学习目录中的“react核心知识”开始一节一节往下看了。  
 首先第一节就是[JSX简介](./MainConcepts/01-JSX简介.md)。
 
-### 拓展
+## 拓展
 
 想要了解create-react-app的构建过程或是要从零开始构建一个react项目的话，请见：[实现create-react-app](./拓展：实现create-react-app.md)
 

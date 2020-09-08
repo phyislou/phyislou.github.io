@@ -39,7 +39,7 @@ ReactDOM.render(
 
 state结构上与props类似，但区别在于state是私有的，并且完全受控于当前组件。
 
-### 将函数组件转换成class组件
+## 将函数组件转换成class组件
 
 通过以下五步将Clock的函数组件转成class组件：
 
@@ -66,7 +66,7 @@ class Clock extends React.Component {
 每次组件更新时其render方法都会被调用，但只要在相同的DOM节点中渲染`<Clock />`，就仅有一个Clock组件的class实例被创建使用（也就是说，render方法里return的内容一旦发生变化，render方法就会被再次调用，且对于同一个DOM节点再次调用render，并不会return一个新的节点，而是替换了之前的旧节点）。  
 这就使得我们可以使用如state或生命周期方法等很多其他特性。
 
-### 向class组件中添加局部的state
+## 向class组件中添加局部的state
 
 我们通过以下三步将date从props移动到state中：
 
@@ -137,7 +137,7 @@ ReactDOM.render(
 
 但事实上由于对组件中的state我们并没有用计时器去每秒更新它，所以现在组件还不会刷新。
 
-### 将生命周期方法添加到Class中
+## 将生命周期方法添加到Class中
 
 在具有许多组件的应用程序中，当组件被销毁时释放所占用的资源是非常重要的。
 
@@ -173,7 +173,7 @@ class Clock extends React.Component {
 * [详解React生命周期](https://www.jianshu.com/p/514fe21b9914)
 
 作为对生命周期的描述，我们可以来看一下这张图：
-![react-04-1](../../../img/react-04-1.png)
+![react-04-01](../../../img/react-04-01.png)
 
 回到之前的例子中，我们在Clock组件中需要设置定时器，一般我们都会用`componentDidMount()`方法（也就是在组件已经被渲染到DOM中后的时点）来设置：
 ```jsx
@@ -263,18 +263,18 @@ export default App;
 4. 浏览器每秒都会调用一次`tick()`方法。 在这方法之中，Clock组件会通过调用`setState()`来计划进行一次UI更新。得益于`setState()`的调用，React能够知道state已经改变了，然后会重新调用`render()`方法来确定页面上该显示什么。这一次，`render()`方法中的`this.state.date`就不一样了，如此以来就会渲染输出更新过的时间。React也会相应的更新DOM。
 5. 一旦Clock组件从DOM中被移除，React就会调用`componentWillUnmount()`生命周期方法，这样计时器就停止了。
 
-### 正确地使用State
+## 正确地使用State
 
 在使用`setState()`的过程中，我们必须清楚了解三件事：
 
-#### 1. 不要直接修改State
+### 1. 不要直接修改State
 
 例如：~~`this.state.comment = 'Hello';`~~，请不要这样写。  
 而是应该写成：`this.setState({comment: 'Hello'});`。
 
 只需记住：构造函数是唯一可以给`this.state`赋值的地方。
 
-#### 2. State的更新可能是异步的
+### 2. State的更新可能是异步的
 
 出于性能考虑，React 可能会把多个`setState()`调用合并成一个调用。
 
@@ -309,7 +309,7 @@ this.setState((state, props) => ({
 参考文章：
 * [react源码阅读笔记（3）batchedUpdates与Transaction](https://www.jianshu.com/p/aa6744fdb845)
 
-#### 3. State的更新会被合并
+### 3. State的更新会被合并
 
 当你调用`setState()`的时候，React会把我们提供的对象合并到当前的state。比如说，我们的state包含了`posts`和`comments`两个独立的变量：
 ```jsx
@@ -339,12 +339,12 @@ componentDidMount() {
 ```
 由于这里的合并是浅合并，所以`this.setState({comments})`完整保留了`this.state.posts`，但是完全替换了`this.state.comments`。
 
-### 数据是向下流动的
+## 数据是向下流动的
 
 不管是父组件或是子组件都无法知道某个组件是有状态的还是无状态的，并且它们也并不关心它是函数组件还是 class 组件。这就是为什么称state为局部的或是封装的的原因。除了拥有并设置了它的组件，其他组件都无法访问。
 
 组件可以选择把它的state作为props向下传递到它的子组件中：
-```jsx
+```html
 <FormattedDate date={this.state.date} />
 ```
 FormattedDate 组件会在其 props 中接收参数 date，但是组件本身无法知道它是来自于 Clock 的 state，或是 Clock 的 props，还是手动输入的。
